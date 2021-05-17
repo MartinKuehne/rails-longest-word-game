@@ -1,0 +1,16 @@
+<h1>New Game</h1>
+<ul class="list-inline"> 
+ <% @letters.each do |letter| %>
+    <li class="list-inline-item"><%= letter.capitalize %></li>
+  <% end %>
+</ul>
+
+<form action="/score">
+  <div class="mb-3">
+    <label for="answer" class="form-label">Your Answer</label>
+    <input type="text" name ="answer" class="form-control" id="answer" placeholder="What is your answer?">
+  </div>
+  <button type="submit" class="btn btn-primary">Ask!</button>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters_array, @letters %>
+</form>
